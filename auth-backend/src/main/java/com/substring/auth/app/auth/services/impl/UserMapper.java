@@ -1,0 +1,3 @@
+package com.substring.auth.app.auth.services.impl;
+import com.substring.auth.app.auth.entities.User; import com.substring.auth.app.auth.payload.*; import org.springframework.stereotype.Component; import java.util.stream.Collectors;
+@Component public class UserMapper{public UserResponse toResponse(User u){var roles=u.getRoles()==null?java.util.Set.<RoleDto>of():u.getRoles().stream().map(r->new RoleDto(r.getId(),r.getName())).collect(Collectors.toSet());return new UserResponse(u.getId(),u.getEmail(),u.getName(),u.getImage(),u.isEnabled(),u.isEmailVerified(),u.getCreatedAt(),u.getUpdatedAt(),u.getProvider(),roles);}}

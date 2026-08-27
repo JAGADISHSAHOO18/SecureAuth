@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:secureauth;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate.ddl-auto: create-drop
+    open-in-view: false
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: test-google
+            client-secret: test-google-secret
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: [openid, profile, email]
+          github:
+            client-id: test-github
+            client-secret: test-github-secret
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: [read:user, user:email]
+
+app:
+  cors.front-end-url: http://localhost:5173
+  auth:
+    frontend.success-redirect: http://localhost:5173/oauth/success
+    frontend.failure-redirect: http://localhost:5173/oauth/failure
+    email-verification-required: false
+    mail.enabled: false
+  admin.email: ""
+
+security.jwt:
+  secret: test-secret-that-is-long-enough-to-satisfy-the-jwt-key-validation-and-is-over-64-characters-123456
+  issuer: secure-auth-test
+  access-ttl-seconds: 900
+  refresh-ttl-seconds: 3600
+  cookie-secure: false
+  cookie-http-only: true
+  cookie-same-site: lax
+
+spring.mail:
+  host: localhost
+  port: 1025

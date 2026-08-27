@@ -1,0 +1,14 @@
+services:
+  backend:
+    environment:
+      SPRING_PROFILES_ACTIVE: prod,oauth
+      OAUTH_ENABLED: "true"
+
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:?Set GOOGLE_CLIENT_ID in .env before enabling OAuth}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:?Set GOOGLE_CLIENT_SECRET in .env before enabling OAuth}
+
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:?Set GITHUB_CLIENT_ID in .env before enabling OAuth}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:?Set GITHUB_CLIENT_SECRET in .env before enabling OAuth}
+
+      FRONT_END_SUCCESS_REDIRECT: http://localhost:5173/dashboard
+      FRONT_END_FAILURE_REDIRECT: http://localhost:5173/oauth/failure

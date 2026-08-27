@@ -1,0 +1,2 @@
+package com.substring.auth.app.auth.services.impl; import org.springframework.stereotype.Service; import java.nio.charset.StandardCharsets; import java.security.*; import java.util.HexFormat;
+@Service public class TokenHashService{public String hash(String v){try{return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(v.getBytes(StandardCharsets.UTF_8)));}catch(NoSuchAlgorithmException e){throw new IllegalStateException(e);}}}

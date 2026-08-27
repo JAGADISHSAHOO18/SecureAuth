@@ -1,0 +1,2 @@
+package com.substring.auth.app.auth.services.impl; import jakarta.servlet.http.HttpServletRequest; import org.springframework.stereotype.Service;
+@Service public class ClientInfoService{public String ip(HttpServletRequest r){String f=r.getHeader("X-Forwarded-For");return f==null||f.isBlank()?r.getRemoteAddr():f.split(",")[0].trim();}public String userAgent(HttpServletRequest r){String v=r.getHeader("User-Agent");return v==null?"unknown":v.substring(0,Math.min(500,v.length()));}}

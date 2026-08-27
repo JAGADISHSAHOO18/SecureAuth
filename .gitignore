@@ -1,0 +1,32 @@
+# Secrets / local environment
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Java
+auth-backend/target/
+*.class
+
+# Node
+auth-front/node_modules/
+auth-front/dist/
+auth-front/coverage/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test/build caches
+auth-front/node_modules/.vite/
+auth-front/node_modules/.tmp/
